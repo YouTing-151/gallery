@@ -1,0 +1,23 @@
+# 系统与编辑器生成文件
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Office / Adobe 临时与锁文件
+~$*
+*.tmp
+*.temp
+*.bak
+*.psb.tmp
+
+# 缩略图缓存
+.cache/
+*_thumbnail/
+*.thumb.*
+
+# 日志
+*.log
