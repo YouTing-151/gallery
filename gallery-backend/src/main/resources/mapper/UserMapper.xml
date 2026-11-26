@@ -32,4 +32,11 @@
         WHERE id = #{id}
     </select>
 
+    <select id="selectByRole" resultMap="userResultMap">
+        SELECT <include refid="userColumns"/>
+        FROM `user`
+        WHERE role = #{role}
+        LIMIT 1
+    </select>
+
 </mapper>

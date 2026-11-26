@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gallery.gallerybackend.mapper.BlogProfileMapper">
+
+    <resultMap id="profileResultMap" type="com.gallery.gallerybackend.entity.BlogProfile">
+        <id column="id" property="id"/>
+        <result column="blogger_id" property="bloggerId"/>
+        <result column="avatar" property="avatar"/>
+        <result column="background_img" property="backgroundImg"/>
+        <result column="signature" property="signature"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectByBloggerId" resultMap="profileResultMap">
+        SELECT id, blogger_id, avatar, background_img, signature, create_time, update_time
+        FROM blog_profile
+        WHERE blogger_id = #{bloggerId}
+    </select>
+
+    <update id="updateProfile">
+        UPDATE blog_profile
+        <set>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="backgroundImg != null">background_img = #{backgroundImg},</if>
+            <if test="signature != null">signature = #{signature},</if>
+        </set>
+        WHERE blogger_id = #{bloggerId}
+    </update>
+
+    <insert id="insertProfile" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO blog_profile (blogger_id, avatar, background_img, signature)
+        VALUES (#{bloggerId}, #{avatar}, #{backgroundImg}, #{signature})
+    </insert>
+
+</mapper>
