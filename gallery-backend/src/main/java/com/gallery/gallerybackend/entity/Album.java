@@ -6,10 +6,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 合集表：parentId 自关联，支持无限嵌套
+ * 合集表（album）：parentId 自关联，支持无限嵌套
+ * 类名使用 Album 避免与 java.util.Collection 冲突
  */
 @Data
-public class Collection {
+public class Album {
 
     private Long id;
 
@@ -27,5 +28,5 @@ public class Collection {
     private LocalDateTime updateTime;
 
     /** 子合集列表（树形结构组装时使用，不映射数据库字段） */
-    private List<Collection> children;
+    private List<Album> children;
 }

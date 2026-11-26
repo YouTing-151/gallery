@@ -1,18 +1,17 @@
 -- ============================================================
 -- Gallery 演示种子数据（本地开发环境使用）
--- 说明：当前密码为明文 123456，仅用于本地联调；
---       登录模块接入加密后，需替换为对应的加密哈希值。
+-- 说明：密码为 BCrypt 加密存储，明文均为 123456。
 -- 运行顺序：先执行 schema.sql，再执行本文件。
 -- ============================================================
 
 USE gallery_db;
 
--- 四类角色演示账号：blogger / admin / service / user
+-- 四类角色演示账号：blogger / admin / service / user（密码明文 123456）
 INSERT INTO `user` (`id`, `account`, `password`, `nickname`, `user_code`, `role`, `avatar`, `status`) VALUES
-(1, 'blogger01', '123456', '听雨',     'BG10001', 'blogger', NULL, 1),
-(2, 'admin01',   '123456', '管理小助手', 'AD10001', 'admin',   NULL, 1),
-(3, 'service01', '123456', '客服小助手', 'SV10001', 'service', NULL, 1),
-(4, 'user01',    '123456', '访客小林',  'U10001',  'user',    NULL, 1);
+(1, 'blogger01', '$2a$10$eVBU/5hVLwXCzvWJw4ZvuO2n2UAUvHeN6EmK0qK9YdQRkt/ijZtTi', '听雨',     'BG10001', 'blogger', NULL, 1),
+(2, 'admin01',   '$2a$10$eVBU/5hVLwXCzvWJw4ZvuO2n2UAUvHeN6EmK0qK9YdQRkt/ijZtTi', '管理小助手', 'AD10001', 'admin',   NULL, 1),
+(3, 'service01', '$2a$10$eVBU/5hVLwXCzvWJw4ZvuO2n2UAUvHeN6EmK0qK9YdQRkt/ijZtTi', '客服小助手', 'SV10001', 'service', NULL, 1),
+(4, 'user01',    '$2a$10$eVBU/5hVLwXCzvWJw4ZvuO2n2UAUvHeN6EmK0qK9YdQRkt/ijZtTi', '访客小林',  'U10001',  'user',    NULL, 1);
 
 -- 博主主页信息（与博主账号 1 一一对应）
 INSERT INTO `blog_profile` (`blogger_id`, `avatar`, `background_img`, `signature`)
